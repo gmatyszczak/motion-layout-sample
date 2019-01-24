@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+            app:constraintSetStart="@+id/expanded"
+            app:constraintSetEnd="@+id/collapsed">
+
+        <OnSwipe app:dragDirection="dragUp"
+                 app:touchAnchorId="@+id/viewPager"
+                 app:touchAnchorSide="top"/>
+
+    </Transition>
+
+    <ConstraintSet android:id="@+id/collapsed">
+
+        <Constraint android:id="@+id/imageTop"
+                    android:layout_width="0dp"
+                    android:layout_height="56dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
+
+            <CustomAttribute
+                    app:attributeName="imageAlpha"
+                    app:customIntegerValue="0"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/textTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageTop"
+                    android:layout_marginStart="72dp"/>
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/expanded">
+
+        <Constraint android:id="@+id/imageTop"
+                    android:layout_width="0dp"
+                    android:layout_height="200dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
+
+            <CustomAttribute
+                    app:attributeName="imageAlpha"
+                    app:customIntegerValue="255"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/textTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="@+id/imageTop"
+                    android:layout_marginBottom="16dp"
+                    app:pathMotionArc="startVertical"/>
+    </ConstraintSet>
+
+</MotionScene>
